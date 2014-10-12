@@ -7,8 +7,11 @@ call vundle#begin() " ininialize Vundle
 Plugin 'gmarik/Vundle.vim' " package manager self
 Plugin 'scrooloose/nerdtree' " advanced sidebar
 Plugin 'kien/ctrlp.vim' " ctrl-p to quick find a file in a project
-Plugin 'altercation/vim-colors-solarized' " precision colorscheme
+Plugin 'altercation/vim-colors-solarized' " solarized color scheme
 Plugin 'scrooloose/syntastic' " syntax checker
+Plugin 'bling/vim-airline' " better-looking status bar
+Plugin 'Lokaltog/vim-easymotion' " faster movement within a file
+Plugin 'tpope/vim-commentary' " gc to comment out 
 
 call vundle#end() " required by Vundle
 filetype plugin indent on " required by Vundle
@@ -39,7 +42,7 @@ set encoding=utf-8 " choose encoding; fixes directory-arrows in NERDTree
 set backspace=2 " backspace acts like it should now
 set nobackup " turf off backup -> use git for the love of god
 set spell spelllang=en_us " spelling
-set modelines=1
+set laststatus=2 " always display the status line
 " }}}
 " COLORS {{{
 set background=dark " background of the solarized theme
@@ -56,12 +59,14 @@ set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested fold max
 set foldmethod=indent " fold based on indent level
+set modelines=1 " last line of the file specifies/overrides fold prefs
 " }}}
 " KEY BINDINGS {{{
-let mapleader = ","
+let mapleader = "¨"
 nmap <leader>w :w!<cr> " express file save
 nmap <leader>q :q!<cr> " express file quit
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR> " opens folds 
+nmap <leader>wq :wq!<cr> " express file save & quit
+nnoremap <space> za
 nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
 " }}}
 " NERDTree {{{
@@ -71,17 +76,21 @@ autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft() " close NERDTree if it is th
 " close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
 function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
+    if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+            if winnr("$") == 1
+             q
+            endif
+        endif
     endif
-  endif
 endfunction
 " }}}
 " ctrlp.vim {{{
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" }}}
+" vim-airline {{{
+let g:airline#extensions#tabline#enabled = 1 " enable top-status-bar
+let g:airline_powerline_fonts = 1 " fixes arrows
 " }}}
 " LaTeX CONFIG {{{
 "compile latex on *.tex save"
