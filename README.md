@@ -8,6 +8,6 @@ cd $_
 ln -s $PWD/.vimrc ~/.vimrc
 ```
 ## Sources
-- [A Good Vimrc - *Doug Black*](http://dougblack.io/words/a-good-vimrc.html)
-- [The Ultimate Vim Configuration - *Amir Salihefendic*](http://amix.dk/vim/vimrc.html)
-- [Solarized Color Scheme - *Ethan Schoonover*](http://ethanschoonover.com/solarized)
+- [A Good Vimrc](http://dougblack.io/words/a-good-vimrc.html) - *Doug Black*
+- [The Ultimate Vim Configuration](http://amix.dk/vim/vimrc.html) - *Amir Salihefendic*
+- [Solarized Color Scheme](http://ethanschoonover.com/solarized) - *Ethan Schoonover*
