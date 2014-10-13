@@ -11,7 +11,8 @@ Plugin 'altercation/vim-colors-solarized' " solarized color scheme
 Plugin 'scrooloose/syntastic' " syntax checker
 Plugin 'bling/vim-airline' " better-looking status bar
 Plugin 'Lokaltog/vim-easymotion' " faster movement within a file
-Plugin 'tpope/vim-commentary' " gc to comment out 
+Plugin 'tpope/vim-commentary' " gc to comment out
+Plugin 'SirVer/ultisnips' " ultimate snippet solution for vim
 
 call vundle#end() " required by Vundle
 filetype plugin indent on " required by Vundle
@@ -63,9 +64,9 @@ set modelines=1 " last line of the file specifies/overrides fold prefs
 " }}}
 " KEY BINDINGS {{{
 let mapleader = "¨"
-nmap <leader>w :w!<cr> " express file save
-nmap <leader>q :q!<cr> " express file quit
-nmap <leader>wq :wq!<cr> " express file save & quit
+nmap <leader>w :w<cr> " express file save
+nmap <leader>q :q<cr> " express file quit
+nmap <leader>wq :wq<cr> " express file save & quit
 nnoremap <space> za
 nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
 " }}}
