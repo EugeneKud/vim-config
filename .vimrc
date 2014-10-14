@@ -93,6 +93,11 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:airline#extensions#tabline#enabled = 1 " enable top-status-bar
 let g:airline_powerline_fonts = 1 " fixes arrows
 " }}}
+" Ultsnips {{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
 " LaTeX CONFIG {{{
 "compile latex on *.tex save"
 "autocmd BufWritePost,FileWritePost *.tex !pdflatex % && open %:r.pdf
