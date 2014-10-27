@@ -5,14 +5,14 @@ set rtp+=~/.vim/bundle/Vundle.vim " include Vundle in runtime path
 call vundle#begin() " ininialize Vundle
 
 Plugin 'gmarik/Vundle.vim' " package manager self
-Plugin 'scrooloose/nerdtree' " advanced sidebar
+"Plugin 'scrooloose/nerdtree' " advanced sidebar
 Plugin 'kien/ctrlp.vim' " ctrl-p to quick find a file in a project
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
-Plugin 'scrooloose/syntastic' " syntax checker
+"Plugin 'scrooloose/syntastic' " syntax checker
 Plugin 'bling/vim-airline' " better-looking status bar
 Plugin 'Lokaltog/vim-easymotion' " faster movement within a file
 Plugin 'tpope/vim-commentary' " gc to comment out
-Plugin 'SirVer/ultisnips' " ultimate snippet solution for vim
+Plugin 'SirVer/ultisnips' " snippets engine
 
 call vundle#end() " required by Vundle
 filetype plugin indent on " required by Vundle
@@ -35,7 +35,7 @@ set showcmd " show command in the status bar
 set autoread " auto read when file is changed from the outside
 set cursorline " highlight current line
 set ruler " always show current position in the status bar
-set colorcolumn=80 " draw a visual line at 80 chars
+"set colorcolumn=80 " draw a visual line at 80 chars
 set wildmenu " provide a visual autocomplete for command menu
 set lazyredraw " redraw only when we need to
 set showmatch " highlight brackets () {} []
@@ -44,6 +44,8 @@ set backspace=2 " backspace acts like it should now
 set nobackup " turf off backup -> use git for the love of god
 set spell spelllang=en_us " spelling
 set laststatus=2 " always display the status line
+set list " always show invisible chars
+set listchars=tab:▸\ ,eol:¬ " symbols for invisible chars
 " }}}
 " COLORS {{{
 set background=dark " background of the solarized theme
@@ -69,22 +71,25 @@ nmap <leader>q :q<cr> " express file quit
 nmap <leader>wq :wq<cr> " express file save & quit
 nnoremap <space> za
 nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
+nmap <leader>l :set list!<CR> " toogle invisible chars
 " }}}
 " NERDTree {{{
-let NERDTreeWinSize=20 " NERDTree sidebar width
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft() " close NERDTree if it is the last open buffer
+"let NERDTreeWinSize=20 " NERDTree sidebar width
+"autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft() " close NERDTree if it is the last open buffer
+"let g:NERDTreeWinPos = "right" " NERDTree stays on the left side
+let g:netrw_liststyle=3
 
 " close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
-function! s:CloseIfOnlyNerdTreeLeft()
-    if exists("t:NERDTreeBufName")
-        if bufwinnr(t:NERDTreeBufName) != -1
-            if winnr("$") == 1
-             q
-            endif
-        endif
-    endif
-endfunction
+"function! s:CloseIfOnlyNerdTreeLeft()
+"    if exists("t:NERDTreeBufName")
+"        if bufwinnr(t:NERDTreeBufName) != -1
+"            if winnr("$") == 1
+"             q
+"            endif
+"        endif
+"    endif
+"endfunction
 " }}}
 " ctrlp.vim {{{
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
@@ -92,11 +97,15 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " vim-airline {{{
 let g:airline#extensions#tabline#enabled = 1 " enable top-status-bar
 let g:airline_powerline_fonts = 1 " fixes arrows
+let g:airline_detect_whitespace=0
 " }}}
 " Ultsnips {{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
+" Snippets {{{
+"ActivateAddons vim-snippets snipmate
 " }}}
 " LaTeX CONFIG {{{
 "compile latex on *.tex save"
