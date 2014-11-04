@@ -5,10 +5,10 @@ set rtp+=~/.vim/bundle/Vundle.vim " include Vundle in runtime path
 call vundle#begin() " ininialize Vundle
 
 Plugin 'gmarik/Vundle.vim' " package manager self
-"Plugin 'scrooloose/nerdtree' " advanced sidebar
+Plugin 'scrooloose/nerdtree' " advanced sidebar
 Plugin 'kien/ctrlp.vim' " ctrl-p to quick find a file in a project
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
-"Plugin 'scrooloose/syntastic' " syntax checker
+Plugin 'scrooloose/syntastic' " syntax checker
 Plugin 'bling/vim-airline' " better-looking status bar
 Plugin 'Lokaltog/vim-easymotion' " faster movement within a file
 Plugin 'tpope/vim-commentary' " gc to comment out
