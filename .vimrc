@@ -1,52 +1,56 @@
 " VUNDLE PLUGINS {{{
-set nocompatible " required by Vundle
-filetype off " required by Vundle
-set rtp+=~/.vim/bundle/Vundle.vim " include Vundle in runtime path
-call vundle#begin() " ininialize Vundle
+set nocompatible                          " required by Vundle
+filetype off                              " required by Vundle
+set rtp+=~/.vim/bundle/Vundle.vim         " include Vundle in runtime path
+call vundle#begin()                       " ininialize Vundle
 
-Plugin 'gmarik/Vundle.vim' " package manager self
-Plugin 'scrooloose/nerdtree' " advanced sidebar
-Plugin 'kien/ctrlp.vim' " ctrl-p to quick find a file in a project
+Plugin 'gmarik/Vundle.vim'                " package manager self
+Plugin 'scrooloose/nerdtree'              " advanced sidebar
+Plugin 'kien/ctrlp.vim'                   " ctrl-p to quick find a file
+                                          " in a project
 Plugin 'altercation/vim-colors-solarized' " solarized color scheme
-Plugin 'scrooloose/syntastic' " syntax checker
-Plugin 'bling/vim-airline' " better-looking status bar
-Plugin 'Lokaltog/vim-easymotion' " faster movement within a file
-Plugin 'tpope/vim-commentary' " gc to comment out
-Plugin 'SirVer/ultisnips' " snippets engine
-Plugin 'honza/vim-snippets' " snippets
+Plugin 'scrooloose/syntastic'             " syntax checker
+Plugin 'bling/vim-airline'                " better-looking status bar
+Plugin 'Lokaltog/vim-easymotion'          " faster movement within a file
+Plugin 'tpope/vim-commentary'             " gc to comment out
+Plugin 'SirVer/ultisnips'                 " snippets engine
+Plugin 'honza/vim-snippets'               " snippets
+Plugin 'godlygeek/tabular'                " align multiple lines
+                                          " based on a specific char
 
-call vundle#end() " required by Vundle
-filetype plugin indent on " required by Vundle
+call vundle#end()                         " required by Vundle
+filetype plugin indent on                 " required by Vundle
 " }}}
 " SPACES & TABS {{{
-set expandtab " tabs are spaces
-set smarttab " be smart about using tabs
-set tabstop=4 " number of visual spaces per TAB
-set shiftwidth=4 " 1TAB = 4SPACEs
-set softtabstop=4 " number of spaces in tab when editing
+set expandtab      " tabs are spaces
+set smarttab       " be smart about using tabs
+set tabstop=4      " number of visual spaces per TAB
+set shiftwidth=4   " 1TAB = 4SPACEs
+set softtabstop=4  " number of spaces in tab when editing
 filetype plugin on " enable filetype plugins
 filetype indent on " load filetype-specific indent files
-set ai " auto indent
-set si " smart indent
+set ai             " auto indent
+set si             " smart indent
 " }}}
 " UI CONFIG {{{
-set number " show line numbers
-syntax enable " syntax highlighting
-set showcmd " show command in the status bar
-set autoread " auto read when file is changed from the outside
-set cursorline " highlight current line
-set ruler " always show current position in the status bar
-"set colorcolumn=80 " draw a visual line at 80 chars
-set wildmenu " provide a visual autocomplete for command menu
-set lazyredraw " redraw only when we need to
-set showmatch " highlight brackets () {} []
-set encoding=utf-8 " choose encoding; fixes directory-arrows in NERDTree
-set backspace=2 " backspace acts like it should now
-set nobackup " turf off backup -> use git for the love of god
-set spell spelllang=en_us " spelling
-set laststatus=2 " always display the status line
-set list " always show invisible chars
-set listchars=tab:▸\ ,eol:¬ " symbols for invisible chars
+set number                   " show line numbers
+syntax enable                " syntax highlighting
+set showcmd                  " show command in the status bar
+set autoread                 " auto read when file is changed
+                             " from the outside
+set cursorline               " highlight current line
+set ruler                    " always show current position in the status bar
+                             " set colorcolumn=80                                  " draw a visual line at 80 chars
+set wildmenu                 " provide a visual autocomplete for command menu
+set lazyredraw               " redraw only when we need to
+set showmatch                " highlight brackets () {} []
+set encoding=utf-8           " choose encoding; fixes directory-arrows in NERDTree
+set backspace=2              " backspace acts like it should now
+set nobackup                 " turf off backup -> use git for the love of god
+set spell spelllang=en_us    " spelling
+set laststatus=2             " always display the status line
+set list                     " always show invisible chars
+set listchars=tab:▸\ ,eol:¬  " symbols for invisible chars
 " }}}
 " COLORS {{{
 set background=dark " background of the solarized theme
@@ -73,6 +77,12 @@ nmap <leader>wq :wq<cr> " express file save & quit
 nnoremap <space> za
 nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
 nmap <leader>l :set list!<CR> " toogle invisible chars
+nnoremap <leader>t :w<CR>:!rubber --pdf --warn all %<CR> " LaTeX compilation with rubber
+nnoremap <leader>v :!open %:r.pdf &<CR><CR> " view LaTeX pdf output
+" }}}
+" EXTENSION SPECIFIC {{{
+autocmd BufNewFile,BufRead *.tex set foldmethod=marker
+autocmd BufNewFile,BufRead *.tex set foldlevel=0
 " }}}
 " NERDTree {{{
 "let NERDTreeWinSize=20 " NERDTree sidebar width
@@ -110,7 +120,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
 " LaTeX CONFIG {{{
 "compile latex on *.tex save"
-"autocmd BufWritePost,FileWritePost *.tex !pdflatex % && open %:r.pdf
+" autocmd BufWritePost,FileWritePost *.tex !pdflatex % && open %:r.pdf
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
