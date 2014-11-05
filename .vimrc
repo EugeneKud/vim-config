@@ -13,6 +13,7 @@ Plugin 'bling/vim-airline' " better-looking status bar
 Plugin 'Lokaltog/vim-easymotion' " faster movement within a file
 Plugin 'tpope/vim-commentary' " gc to comment out
 Plugin 'SirVer/ultisnips' " snippets engine
+Plugin 'honza/vim-snippets' " snippets
 
 call vundle#end() " required by Vundle
 filetype plugin indent on " required by Vundle
