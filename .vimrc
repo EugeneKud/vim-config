@@ -8,7 +8,7 @@ Plugin 'gmarik/Vundle.vim'                " package manager self
 Plugin 'scrooloose/nerdtree'              " advanced sidebar
 Plugin 'kien/ctrlp.vim'                   " ctrl-p to quick find a file
                                           " in a project
-Plugin 'altercation/vim-colors-solarized' " solarized color scheme
+Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/syntastic'             " syntax checker
 Plugin 'bling/vim-airline'                " better-looking status bar
 Plugin 'Lokaltog/vim-easymotion'          " faster movement within a file
@@ -40,8 +40,6 @@ set autoread                 " auto read when file is changed
                              " from the outside
 set cursorline               " highlight current line
 set ruler                    " always show current position in the status bar
-                             " set colorcolumn=80                                  " draw a visual line at 80 chars
-set wildmenu                 " provide a visual autocomplete for command menu
 set lazyredraw               " redraw only when we need to
 set showmatch                " highlight brackets () {} []
 set encoding=utf-8           " choose encoding; fixes directory-arrows in NERDTree
