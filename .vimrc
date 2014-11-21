@@ -1,25 +1,3 @@
-" VUNDLE PLUGINS {{{
-set nocompatible                          " required by Vundle
-filetype off                              " required by Vundle
-set rtp+=~/.vim/bundle/Vundle.vim         " include Vundle in runtime path
-call vundle#begin()                       " ininialize Vundle
-
-Plugin 'gmarik/Vundle.vim'                " package manager self
-Plugin 'scrooloose/nerdtree'              " advanced sidebar
-Plugin 'kien/ctrlp.vim'                   " ctrl-p to quick find a file
-                                          " in a project
-Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/syntastic'             " syntax checker
-Plugin 'Lokaltog/vim-easymotion'          " faster movement within a file
-Plugin 'tpope/vim-commentary'             " gc to comment out
-Plugin 'SirVer/ultisnips'                 " snippets engine
-Plugin 'honza/vim-snippets'               " snippets
-Plugin 'godlygeek/tabular'                " align multiple lines
-                                          " based on a specific char
-
-call vundle#end()                         " required by Vundle
-filetype plugin indent on                 " required by Vundle
-" }}}
 " SPACES & TABS {{{
 set expandtab      " tabs are spaces
 set smarttab       " be smart about using tabs
@@ -80,44 +58,6 @@ nnoremap <leader>v :!open %:r.pdf &<CR><CR> " view LaTeX pdf output
 " EXTENSION SPECIFIC {{{
 autocmd BufNewFile,BufRead *.tex set foldmethod=marker
 autocmd BufNewFile,BufRead *.tex set foldlevel=0
-" }}}
-" NERDTree {{{
-"let NERDTreeWinSize=20 " NERDTree sidebar width
-"autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft() " close NERDTree if it is the last open buffer
-"let g:NERDTreeWinPos = "right" " NERDTree stays on the left side
-let g:netrw_liststyle=3
-
-" close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
-"function! s:CloseIfOnlyNerdTreeLeft()
-"    if exists("t:NERDTreeBufName")
-"        if bufwinnr(t:NERDTreeBufName) != -1
-"            if winnr("$") == 1
-"             q
-"            endif
-"        endif
-"    endif
-"endfunction
-" }}}
-" ctrlp.vim {{{
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-" }}}
-" vim-airline {{{
-let g:airline#extensions#tabline#enabled = 1 " enable top-status-bar
-let g:airline_powerline_fonts = 1 " fixes arrows
-let g:airline_detect_whitespace=0
-" }}}
-" Ultsnips {{{
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" }}}
-" Snippets {{{
-"ActivateAddons vim-snippets snipmate
-" }}}
-" LaTeX CONFIG {{{
-"compile latex on *.tex save"
-" autocmd BufWritePost,FileWritePost *.tex !pdflatex % && open %:r.pdf
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
