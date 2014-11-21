@@ -10,7 +10,6 @@ Plugin 'kien/ctrlp.vim'                   " ctrl-p to quick find a file
                                           " in a project
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/syntastic'             " syntax checker
-Plugin 'bling/vim-airline'                " better-looking status bar
 Plugin 'Lokaltog/vim-easymotion'          " faster movement within a file
 Plugin 'tpope/vim-commentary'             " gc to comment out
 Plugin 'SirVer/ultisnips'                 " snippets engine
