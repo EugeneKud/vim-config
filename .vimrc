@@ -46,8 +46,6 @@ set backspace=2              " backspace acts like it should now
 set nobackup                 " turf off backup -> use git for the love of god
 set spell spelllang=en_us    " spelling
 set laststatus=2             " always display the status line
-set list                     " always show invisible chars
-set listchars=tab:▸\ ,eol:¬  " symbols for invisible chars
 " }}}
 " COLORS {{{
 set background=dark " background of the solarized theme
