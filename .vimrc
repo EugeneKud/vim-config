@@ -15,21 +15,10 @@ syntax enable                " syntax highlighting
 set showcmd                  " show command in the status bar
 set autoread                 " auto read when file is changed
                              " from the outside
-set cursorline               " highlight current line
-set ruler                    " always show current position in the status bar
-set lazyredraw               " redraw only when we need to
-set showmatch                " highlight brackets () {} []
+"set cursorline             " highlight current line
 set encoding=utf-8           " choose encoding; fixes directory-arrows in NERDTree
 set backspace=2              " backspace acts like it should now
-set nobackup                 " turf off backup -> use git for the love of god
-set spell spelllang=en_us    " spelling
 set laststatus=2             " always display the status line
-set list                     " always show invisible chars
-set listchars=tab:▸\ ,eol:¬  " symbols for invisible chars
-" }}}
-" COLORS {{{
-set background=dark " background of the solarized theme
-colorscheme solarized " install theme in .vim/colors/ first!
 " }}}
 " SEARCHING {{{
 set ignorecase " ignore case when searching
