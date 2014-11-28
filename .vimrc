@@ -1,1 +1,0 @@
-/Users/eugene/Repos/my-vim-config/.vimrc
