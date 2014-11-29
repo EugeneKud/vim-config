@@ -6,6 +6,7 @@
 git clone https://github.com/EugeneKud/vim-config.git
 cd $_
 ln -s $PWD/.vimrc ~/.vimrc
+ln -s $PWD/.latexmkrc ~/.latexmkrc
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim ~/.vimrc
 ```
