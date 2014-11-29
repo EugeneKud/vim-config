@@ -6,11 +6,11 @@ call vundle#begin()                       " ininialize Vundle
 
 Plugin 'gmarik/Vundle.vim'                " package manager self
 
+"Plugin 'tpope/vim-fugitive'               " deep vim integration
 Plugin 'Lokaltog/vim-easymotion'          " faster movement within a file
+Plugin 'Shougo/neocomplcache.vim'         " completion!
 Plugin 'godlygeek/tabular'                " align multiple lines
 Plugin 'altercation/vim-colors-solarized' " precision colorscheme
-"Plugin 'tpope/vim-fugitive'               " deep vim integration
-Plugin 'Shougo/neocomplcache.vim'          " completion!
 
 call vundle#end()                         " required by Vundle
 filetype plugin indent on                 " required by Vundle
@@ -23,6 +23,8 @@ set shiftwidth=4  " 1TAB = 4SPACEs
 set softtabstop=4 " number of spaces in tab when editing
 set autoindent    " auto indent
 set smartindent   " smart indent
+set listchars=tab:▸\ ,eol:¬
+set list
 " }}}
 "UI CONFIG {{{
 set number                   " show line numbers
@@ -62,18 +64,24 @@ set modelines=1       " last line of the file specifies/overrides fold prefs
 map j gj
 map k gk
 let mapleader = ","
-nmap <leader>w :w<cr>                                    " express file save
-nmap <leader>q :q<cr>                                    " express file quit
-nmap <leader>wq :wq<cr>                                  " express file save & quit
+let localmapleader = ","
+nmap <leader>w :w<cr>                        " express file save
+nmap <leader>q :q<cr>                        " express file quit
+nmap <leader>wq :wq<cr>                      " express file save & quit
 nnoremap <space> za
-nnoremap <silent> <C-D> :NERDTreeToggle <cr>             " opens NERDTree sidebar
-nmap <leader>l :set list!<CR>                            " toogle invisible chars
-nnoremap <leader>t :w<CR>:!rubber --pdf --warn all %<CR> " LaTeX compilation with rubber
-nnoremap <leader>v :!open %:r.pdf &<CR><CR>              " view LaTeX pdf output
+nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
 " }}}
 "EXTENSION SPECIFIC {{{
 autocmd BufNewFile,BufRead *.tex set foldmethod=marker
 autocmd BufNewFile,BufRead *.tex set foldlevel=0
+" }}}
+"LaTeX CONFIG {{{
+setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
+if filereadable('Makefile')
+    setlocal makeprg=make
+else
+    exec "setlocal makeprg=make\\ -f\\ ~/.latex.mk\\ " . substitute(bufname("%"),"tex$","pdf", "")
+endif
 " }}}
 "PLUGIN : NERDTree {{{
 "let NERDTreeWinSize=20 " NERDTree sidebar width
@@ -190,10 +198,6 @@ let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::' 
 "}}}
-"LaTeX CONFIG {{{
-"compile latex on *.tex save"
-" autocmd BufWritePost,FileWritePost *.tex !pdflatex % && open %:r.pdf
-" }}}
 
 
 " vim:foldmethod=marker:foldlevel=0
