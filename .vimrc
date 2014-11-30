@@ -11,6 +11,7 @@ Plugin 'Lokaltog/vim-easymotion'          " faster movement within a file
 Plugin 'Shougo/neocomplcache.vim'         " completion!
 Plugin 'godlygeek/tabular'                " align multiple lines
 Plugin 'altercation/vim-colors-solarized' " precision colorscheme
+Plugin 'bling/vim-airline' " lean & mean status/tabline
 
 call vundle#end()                         " required by Vundle
 filetype plugin indent on                 " required by Vundle
@@ -25,6 +26,7 @@ set autoindent    " auto indent
 set smartindent   " smart indent
 set listchars=tab:▸\ ,eol:¬
 set list
+set mouse=a
 " }}}
 "UI CONFIG {{{
 set number                   " show line numbers
@@ -46,6 +48,9 @@ set laststatus=2             " always display the status line
 set background=light  " switch to dark for dark background
 colorscheme solarized " precision color theme
 " }}}
+"BUFFERS {{{
+set wildchar=<Tab> wildmenu wildmode=full
+" }}}
 "SEARCHING {{{
 set ignorecase " ignore case when searching
 set smartcase  " when searching try to be smart about cases
@@ -65,6 +70,7 @@ map j gj
 map k gk
 let mapleader = ","
 let localmapleader = ","
+nmap <leader>n :bn<cr>
 nmap <leader>w :w<cr>                        " express file save
 nmap <leader>q :q<cr>                        " express file quit
 nmap <leader>wq :wq<cr>                      " express file save & quit
@@ -105,9 +111,9 @@ endif
 " let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " }}}
 "PLUGIN : vim-airline {{{
-" let g:airline#extensions#tabline#enabled = 1 " enable top-status-bar
-" let g:airline_powerline_fonts = 1 " fixes arrows
-" let g:airline_detect_whitespace=0
+let g:airline#extensions#tabline#enabled = 1 " enable top-status-bar
+let g:airline_powerline_fonts = 1 " fixes arrows
+let g:airline_detect_whitespace=0
 " }}}
 "PLUGIN : neocomplcache {{{
 "cp_enableAtStartup = 0
