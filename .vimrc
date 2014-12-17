@@ -11,6 +11,8 @@ Plugin 'altercation/vim-colors-solarized' " precision colorscheme
 Plugin 'kien/ctrlp.vim'                   " easier file switching
 Plugin 'SirVer/ultisnips'                 " snippets engine
 Plugin 'honza/vim-snippets'               " snippets themselves
+Plugin 'scrooloose/syntastic'             " syntax checker
+
 
 call vundle#end()                         " required by Vundle
 filetype plugin indent on                 " required by Vundle
@@ -82,8 +84,6 @@ nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces
 " }}}
 "EXTENSION SPECIFIC {{{
-autocmd BufNewFile,BufRead *.tex set foldmethod=marker
-autocmd BufNewFile,BufRead *.tex set foldlevel=0
 " }}}
 "LaTeX CONFIG {{{
 setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
