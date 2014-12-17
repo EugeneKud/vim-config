@@ -6,6 +6,7 @@ call vundle#begin()                       " ininialize Vundle
 
 Plugin 'gmarik/Vundle.vim'                " package manager self
 
+
 Plugin 'godlygeek/tabular'                " align on multiple lines
 Plugin 'altercation/vim-colors-solarized' " precision colorscheme
 Plugin 'kien/ctrlp.vim'                   " easier file switching
@@ -18,14 +19,10 @@ call vundle#end()                         " required by Vundle
 filetype plugin indent on                 " required by Vundle
 " }}}
 "SPACES & TABS {{{
-" TABs are SPACEs
-"set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-" TABs are TABs
-set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
-
+"set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " TABs are SPACEs
+set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4 " TABs are TABs
 set autoindent    " auto indent
 set smartindent   " smart indent
-
 " }}}
 "UI CONFIG {{{
 set number                    " show line numbers
@@ -44,15 +41,14 @@ set spell spelllang=en_us     " spelling
 set laststatus=2              " always display the status line
 set listchars=tab:▸\          " arrow + spaces for the rest
 set list                      " show invisible characters
-set mouse=a"                  " enable moust
+set mouse=a"                  " enable mouse
+" display option in a list while typing :
+set wildchar=<Tab> wildmenu wildmode=full
 " }}}
 "COLORS {{{
-set t_Co=256          " tell vim that terminal support 256 colors
+set t_Co=256          " tell vim that terminal supports 256 colors
 set background=dark   " switch to dark for dark background
 colorscheme solarized " precision color theme
-" }}}
-"BUFFERS {{{
-set wildchar=<Tab> wildmenu wildmode=full
 " }}}
 "SEARCHING {{{
 set ignorecase " ignore case when searching
@@ -68,33 +64,39 @@ set foldmethod=indent " fold based on indent level
 set modelines=1       " last line of the file specifies/overrides fold prefs
 " }}}
 "KEY BINDINGS {{{
+let mapleader = "," " map leader to the coma
+let localmapleader = "," " for specific filetypes
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-let mapleader = ","
-let localmapleader = ","
-nmap <leader>n :bn<cr>
-nmap <leader>w :w<cr>                        " express file save
-nmap <leader>q :q<cr>                        " express file quit
-nmap <leader>wq :wq<cr>                      " express file save & quit
-nnoremap <space> za
-nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
+
+nmap <leader>n :bn<cr>  " express next buffer
+nmap <leader>p :bp<cr>  " express previous buffer
+nmap <leader>w :w!<cr>  " express file save
+nmap <leader>q :q!<cr>  " express file quit
+nmap <leader>wq :wq<cr> " express file save & quit
+
+nnoremap <space> za     " fold opener
 " }}}
 "SCRIPTS {{{
-autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e " remove trailing white spaces
 " }}}
 "EXTENSION SPECIFIC {{{
 " }}}
 "LaTeX CONFIG {{{
-setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
-if filereadable('Makefile')
-    setlocal makeprg=make
-else
-    exec "setlocal makeprg=make\\ -f\\ ~/.latex.mk\\ " . substitute(bufname("%"),"tex$","pdf", "")
-endif
+"setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
+"if filereadable('Makefile')
+"    setlocal makeprg=make
+"else
+"    exec "setlocal makeprg=make\\ -f\\ ~/.latex.mk\\ " . substitute(bufname("%"),"tex$","pdf", "")
+"endif
 " }}}
 "PLUGIN : ctrlp.vim {{{
 " let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" }}}
+"PLUGIN : syntastic {{{
+"let g:syntastic_asm_dialect = 'intel'
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
