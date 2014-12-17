@@ -9,43 +9,44 @@ Plugin 'gmarik/Vundle.vim'                " package manager self
 Plugin 'godlygeek/tabular'                " align on multiple lines
 Plugin 'altercation/vim-colors-solarized' " precision colorscheme
 Plugin 'kien/ctrlp.vim'                   " easier file switching
-Plugin 'SirVer/ultisnips' " snippets engine
-Plugin 'honza/vim-snippets' " snippets themselves
+Plugin 'SirVer/ultisnips'                 " snippets engine
+Plugin 'honza/vim-snippets'               " snippets themselves
 
 call vundle#end()                         " required by Vundle
 filetype plugin indent on                 " required by Vundle
 " }}}
 "SPACES & TABS {{{
-set expandtab     " tabs are spaces
-set smarttab      " be smart about using tabs
-set tabstop=4     " number of visual spaces per TAB
-set shiftwidth=4  " 1TAB = 4SPACEs
-set softtabstop=4 " number of spaces in tab when editing
+" TABs are SPACEs
+"set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+" TABs are TABs
+set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
+
 set autoindent    " auto indent
 set smartindent   " smart indent
-set listchars=tab:▸\ ,eol:¬
-set list
-set mouse=a
+
 " }}}
 "UI CONFIG {{{
-set number                   " show line numbers
-syntax enable                " syntax highlighting
-set showcmd                  " show command in the status bar
-set autoread                 " auto read when file is changed
-                             " from the outside
-set cursorline               " highlight current line
-set ruler                    " always show current position in the status bar
-set lazyredraw               " redraw only when we need to
-set showmatch                " highlight brackets () {} []
-set encoding=utf-8           " choose encoding; fixes directory-arrows in NERDTree
-set backspace=2              " backspace acts like it should now
-set nobackup                 " turf off backup -> use git for the love of god
-set spell spelllang=en_us    " spelling
-set laststatus=2             " always display the status line
+set number                    " show line numbers
+syntax enable                 " syntax highlighting
+set showcmd                   " show command in the status bar
+set autoread                  " auto read when file is changed
+                              " from the outside
+set cursorline                " highlight current line
+set ruler                     " always show current position in the status bar
+set lazyredraw                " redraw only when we need to
+set showmatch                 " highlight brackets () {} []
+set encoding=utf-8            " choose encoding; fixes directory-arrows in NERDTree
+set backspace=2               " backspace acts like it should now
+set nobackup                  " turf off backup -> use git for the love of god
+set spell spelllang=en_us     " spelling
+set laststatus=2              " always display the status line
+set listchars=tab:▸\          " arrow + spaces for the rest
+set list                      " show invisible characters
+set mouse=a"                  " enable moust
 " }}}
 "COLORS {{{
-set t_Co=256 " tell vim that terminal support 256 colors
-set background=dark  " switch to dark for dark background
+set t_Co=256          " tell vim that terminal support 256 colors
+set background=dark   " switch to dark for dark background
 colorscheme solarized " precision color theme
 " }}}
 "BUFFERS {{{
@@ -76,6 +77,9 @@ nmap <leader>q :q<cr>                        " express file quit
 nmap <leader>wq :wq<cr>                      " express file save & quit
 nnoremap <space> za
 nnoremap <silent> <C-D> :NERDTreeToggle <cr> " opens NERDTree sidebar
+" }}}
+"SCRIPTS {{{
+autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespaces
 " }}}
 "EXTENSION SPECIFIC {{{
 autocmd BufNewFile,BufRead *.tex set foldmethod=marker
