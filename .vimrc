@@ -10,9 +10,8 @@ Plugin 'gmarik/Vundle.vim'                " package manager self
 Plugin 'godlygeek/tabular'                " align on multiple lines
 Plugin 'altercation/vim-colors-solarized' " precision colorscheme
 Plugin 'kien/ctrlp.vim'                   " easier file switching
-Plugin 'SirVer/ultisnips'                 " snippets engine
-Plugin 'honza/vim-snippets'               " snippets themselves
 Plugin 'scrooloose/syntastic'             " syntax checker
+Plugin 'tpope/vim-surround'               " quoting/paranthesizing
 
 
 call vundle#end()                         " required by Vundle
@@ -64,8 +63,8 @@ set foldmethod=indent " fold based on indent level
 set modelines=1       " last line of the file specifies/overrides fold prefs
 " }}}
 "KEY BINDINGS {{{
-let mapleader = "," " map leader to the coma
-let localmapleader = "," " for specific filetypes
+let mapleader = "§" " map leader to the coma
+let localmapleader = "§" " for specific filetypes
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
